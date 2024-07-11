@@ -14,5 +14,6 @@ public class ScannerExample {
 				break;
 			}
 		}
+		scanner.close();
 	}
 }
