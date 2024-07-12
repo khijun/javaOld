@@ -1,10 +1,10 @@
 package project1;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ex07 {
-	
+
 	public static void showMain() {
 		System.out.println("---------------------------------------");
 		System.out.println("1.로그인 | 2. 회원가입 | 3.예금/출금 | 4. 종료");
@@ -43,7 +43,7 @@ public class Ex07 {
 		String id = null;
 		String pwd = null;
 		
-		ArrayList<Member> userList = new ArrayList<Member>();
+//		ArrayList<Member> userList = new ArrayList<Member>();
 		
 //		userList.add(new Member("","","","java","12345"));
 		

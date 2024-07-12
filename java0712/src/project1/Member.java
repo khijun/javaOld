@@ -19,11 +19,11 @@ public class Member {
 	}
 	
 	public Member(String name, String ssn, String phone) {
-		this(name, ssn, phone, "", "");
+		this(name, ssn, phone, null, null);
 	}
 	
 	public Member() {
-		
+		this(null, null, null, null, null);
 	}
 
 	@Override
