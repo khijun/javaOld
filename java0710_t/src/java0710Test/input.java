@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class input {
 	
 	final static int MIN = 0;
-	final static int MAX = 100000000;
+	final static int MAX = (int)(Math.pow(2.0,31.0)-1);
 
 	public static int getNumber(String msg, Scanner sc, int min, int max) {
 		int number = 0;

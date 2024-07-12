@@ -6,6 +6,7 @@ public class Ex01 {
 		System.out.println("*".repeat(3));
 		String str = "Hello World";
 		System.out.println(str);
+		System.out.println(1<<31);
 	}
 
 }
