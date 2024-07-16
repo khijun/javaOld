@@ -3,6 +3,7 @@ package importedProject1;
 import java.io.Serializable;
 
 public class Member implements Serializable{
+	private static final long serialVersionUID = 1L;
 	String name;
 	String ssn;   // 주민번호 6자리 패스워드
 	String phone;
