@@ -1,0 +1,41 @@
+docker ps -a // 도커 확인, -a는 전체
+docker start "컨테이너명"
+docker stop "컨테이너명"
+docker rm "컨테이너명"
+docker run --name "도커 이름" -d -p "외부포트":"내부포트" httpd 
+// -d는 백그라운드, -p는 포트 지정
+
+docker image ls
+docker image rm "이미지 명"
+
+docker cp "복사할 파일명" "경로" // 양방향 가능
+
+docker run --name mysql000ex7 -dit -e MYSQL_ROOT_PASSWORD=1234 mysql :(버전명)
+// -dit : 백그라운드 실행 및 키보드로 입력, -e MYSQL_ROOT_PASSWORD : 루트 패스워드 지정,
+MYSQL_DATABASE : 데이터베이스명, MYSQL_USER : 유저명, MYSQL_PASSWORD : 유저 패스워드,
+
+mysql 번호 : 1234
+
+docker exec -it mysql000ex7 mysql -u root -p // mysql 루트계정으로 접속,
+-it : 컨테이너를 종료하지 않은 채, 터미널의 입력을 계속해서 컨테이너로 전달하기 
+위해서 사용한다. (세션 연결)
+
+
+mysql 명령어
+show databases; // mysql 데이터베이스 조회
+show tables;
+desc "테이블명"; // 테이블 구조 조회
+create table "테이블명" (테이블구조);
+insert into "테이블명"("행") values("데이터");
+select "행 이름"|* from '테이블명";
+
+docker network create wordpress000net1	// 워드프레스
+
+docker run --name mysql000ex11 -dit --net=wordpress000net1 -e MYSQL_ROOT_PASSWORD=myrootpass -e 
+MYSQL_DATABASE=wordpress000db -e MYSQL_USER=wordpress000kun -e MYSQL_PASSWORD=wkunpass mysql:8.0.33 
+--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+// mysql
+
+docker run --name wordpress000ex12 -dit --net=wordpress000net1 -p 8085:80 -e WORDPRESS_DB_HOST=mysql000ex11 
+-e WORDPRESS_DB_NAME=wordpress000db -e WORDPRESS_DB_USER=wordpress000kun -e WORDPRESS_DB_PASSWORD=wkunpass wordpress
+// 워드프레스

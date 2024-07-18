@@ -1,0 +1,7 @@
+git init
+git add . // 커밋할 파일 추가
+git commit -m "first commit" // 커밋
+git remote add origin https://github.com/kheejun00/202407JAVA.git
+git push -u origin master  // 업로드
+
+자바 환경변수는 %JAVA_HOME% 이름에 자바 설치 경로를 입력한다

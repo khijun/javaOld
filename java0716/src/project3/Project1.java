@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@SuppressWarnings(value = "unchecked")
 public class Project1 {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {

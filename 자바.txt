@@ -1,0 +1,65 @@
+강사님 깃허브
+https://github.com/Jiwoong-Jung/202407Java
+
+타입은 메모리에 저장되는 방식을 말한다.
+
+btye타입끼리 연산을 할 때 int형으로 자동 변환되어 계산되기 때문에 결과는 int형으로 나온다.
+byte b1 = 1;
+byte b2 = 2;
+byte b3 = (byte) b1+b2;
+
+String 내장함수로 문자열을 반복해 붙여주는 repeat(int n)메서드가 있다.
+
+자바에선 배열 생성시 자동 초기화
+
+int scores[] = new int[] {83,90,87};
+int scores2[] = {83,90,87};
+두 문장은 같다.
+
+Set<Integer> lottoSet = new HashSet<>();	//	중복을 허용하지 않는 Set 사용
+<Integer>는 제네릭
+
+System.out.printf("국어점수: %3.2f\n",score);	//	3은 확보할 공간의 자릿수, .2는 소수점 자릿수 지정
+
+바이트 -> InputStream -> ObjectInputStream(역직렬화) -> 객체 -> ObjectOutputStream(직렬화) -> OutputStream -> 바이트
+
+java.io.NotSerializableException : 직렬화 하지 않음.
+
+arraycopy("복사할 배열명", 복사 시작 인덱스, "붙여넣을 배열명", 붙여넣기 시작 인덱스, "복사할 문자 수");	// 배열복사
+
+자료구조를 사용해 객체들을 효율적으로 추가 삭제 검색할 수 있도록 인터페이스와 구현 클래스를 java.util 패키지에서 제공하며 
+이를 총칭해 컬렉션 프레임워크라 한다.
+
+이터레이터(자바 디자인 패턴 = 객체지향 코딩 패턴) = 반복자
+
+Iterator<String> it = list.iterator();
+		while(it.hasNext()) {
+			String str = it.next();
+			System.out.println(str);
+		}
+
+courses.contains(course)	// course가 courses에 존재하는지 확인
+
+프로젝트 우클릭 > Build Path > Configure build path > library > classpath > add external jars로 라이브러리 임포트 가능
+
+생성자는 특별한 메소드로, 반환타입이 존재하지 않음.
+
+생성자가 다른 생성자를 호출 시 반드시 호출 먼저 해야한다.(this(), super()가 첫번째 줄)
+
+this는 객체 자신에 대한 레퍼런스(참조)이다.
+
+모든 클래스의 부모는 Object, 자식 클래스에서 인스턴스를 생성하기 위해서 부모 클래스의 생성자를 호출해야함(Object는 그 메소드를 사용하지
+않으면 호출할 필요 없음)
+
+인터페이스는 상수와 추상클래스만 소유 가능
+
+인스턴스 멤버 클래스는 static 키워드없이 중첩 선언된 클래스를 의미
+
+인스턴스는 클래스를 이용해 생성해야 사용 가능한 필드
+정적 멤버는 static
+
+자식 객체가 재정의된 메소드를 가지고 있으면, 부모 타입으로 자동 타입 변환 후에 메소드를 호출하면 재정의된 자식 메소드가 호출된다. = 다형성
+
+인터페이스에서 필드는 무조건 public static final이다. 생략가능
+인터페이스도 상속관계에서 일어나는 자동 타입 변환이 가능하다.
+인터페이스간 상속은 implements가 아닌 extends이다. 그러므로 상속받은 인터페이스의 메소드를 구현할 필요가 없다. 또한 인터페이스간 다중상속이 가능

@@ -1,0 +1,18 @@
+vs코드 원격연결 끌 때 파일 > 원격 연결 닫기
+
+vscode 자동로그인:
+터미널에 ssh-keygen -t rsa -b 4096 입력
+원격탐색기에 IdentityFile C:\Users\DU\.ssh\id_rsa 입력
+탐색기에서 id_rsa.pub의 내용을 authorized_keys 에 붙여넣기
+
+자바랑 git, maven 다운:
+터미널에 아래 입력
+sudo apt-get update
+sudo apt-get install net-tools iputils-ping nano vim git maven
+sudo apt install openjdk-17-jdk
+
+JAVA_HOME 설정:
+파일탐색기에서 .bashrc 맨 아래줄에 export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64" 입력 후 저장
+터미널에 source ~/.bashrc 입력
+
+확장:마켓플레이스 에서 Extension Pack For Java(Microsoft) 다운( 나머지 2개 같이 받아짐)
