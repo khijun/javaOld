@@ -59,8 +59,13 @@ public class Member implements Serializable{
 		this(name, ssn, phone, 0);
 	}
 	
-	public void deposit(int deposit) {	// 입금
-		balance += deposit;
+	public boolean deposit(int deposit) {	// 입금
+		if(deposit>=0) {
+			balance += deposit;
+			return true;
+		}
+		System.out.println("0이하의 금액은 불가능합니다.");
+		return false;
 	}
 	
 	public boolean withdraw(int withdraw) {	// 출금

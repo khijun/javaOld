@@ -5,10 +5,14 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -58,7 +62,6 @@ public class MyFrame extends JFrame implements ActionListener{
 		JPanel jp1 = new JPanel(new FlowLayout());
 		JPanel jp2 = new JPanel(new FlowLayout());
 		JPanel jp3 = new JPanel(new FlowLayout());
-		
 		jp1.add(lb1);
 		jp1.add(jt1);
 		jp1.add(lb2);
@@ -75,8 +78,48 @@ public class MyFrame extends JFrame implements ActionListener{
 		jp3.add(jb5);
 		con.add(jp3,BorderLayout.SOUTH);
 
-		jb1.addActionListener(this);
-		jb2.addActionListener(this);
+		jb1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(member != null) {
+					member = null;
+					ta.setText("로그아웃 완료");
+					jb1.setText("로그인");
+				}else {
+				String name = jt1.getText();
+				String ssn = jt2.getText();
+				for(Member m : list) {
+					if(name.equals(m.getName())&&ssn.equals(m.getSsn())) {
+						member = m;
+						ta.setText("현재 유저: " + member.getName());
+						jt1.setText("");
+						jt2.setText("");
+						jb1.setText("로그아웃");
+						break;
+					}
+				}
+				if(member == null)
+					ta.setText("로그인 실패");
+					jt2.setText("");
+				}
+			}
+		});
+		jb2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = jt1.getText();
+				String ssn = jt2.getText();
+				String phone = jt3.getText();
+				if(name.equals("")||ssn.equals("")||phone.equals("")) {
+					ta.setText("필수 항목 입력 요망");
+				}else {
+					list.add(new Member(name, ssn, phone));
+					ta.setText("회원가입 완료");
+				}
+			}
+		});
 		jb3.addActionListener(this);
 		jb4.addActionListener(this);
 		jb5.addActionListener(this);
@@ -86,6 +129,25 @@ public class MyFrame extends JFrame implements ActionListener{
 		this.setLocation(700, 300);
 		this.setSize(900, 500);
 		this.setVisible(true);
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.out.println("저장중");
+				try (FileOutputStream fos = new FileOutputStream("C:\\temp\\members.dat");
+						ObjectOutputStream oos = new ObjectOutputStream(fos)){
+					
+					oos.writeObject(list);
+					System.out.println("객체를 파일에 저장했습니다.");
+					
+				}catch(IOException ex) {
+					System.out.println("저장실패");
+					ex.printStackTrace();
+				}
+				JFrame frame = (JFrame)e.getWindow();
+				frame.dispose();
+				System.out.println("windowClosing()");
+			}
+		});
 	}
 	
 	public static void main(String[] args) {
@@ -95,47 +157,20 @@ public class MyFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == jb1) {
-			if(member != null) {
-				member = null;
-				ta.setText("로그아웃 완료");
-				jb1.setText("로그인");
-			}else {
-			String name = jt1.getText();
-			String ssn = jt2.getText();
-			for(Member m : list) {
-				if(name.equals(m.getName())&&ssn.equals(m.getSsn())) {
-					member = m;
-					ta.setText("현재 유저: " + member.getName());
-					jt1.setText("");
-					jt2.setText("");
-					jb1.setText("로그아웃");
-					break;
-				}
-			}
-			if(member == null)
-				ta.setText("로그인 실패");
-				jt2.setText("");
-			}
-		}else if(e.getSource() == jb2) {
-			String name = jt1.getText();
-			String ssn = jt2.getText();
-			String phone = jt3.getText();
-			if(name.equals("")||ssn.equals("")||phone.equals("")) {
-				ta.setText("필수 항목 입력 요망");
-			}else {
-				list.add(new Member(name, ssn, phone));
-				ta.setText("회원가입 완료");
-			}
-		}else if(e.getSource() == jb3) {
+		switch(e.getActionCommand()) {
+		case "예금":
 			if(member == null) {
 				ta.setText("로그인 필요");
 			}else {
 				int value = Integer.parseInt(jt3.getText());
-				member.deposit(value);	// 임시로 전화번호 칸에 기입
-				ta.setText("예금한 금액: "+ value);
+				if(member.deposit(value)) {	// 임시로 전화번호 칸에 기입
+					ta.setText("예금한 금액: "+ value);
+				}else {
+					ta.setText("출금 실패");
+				}
 			}
-		}else if(e.getSource() == jb4) {
+			break;
+		case "출금":
 			if(member == null) {
 				ta.setText("로그인 필요");
 			}else {
@@ -146,14 +181,14 @@ public class MyFrame extends JFrame implements ActionListener{
 					ta.setText("출금 실패");
 				}
 			}
-		}else if(e.getSource() == jb5) {
+			break;
+		case "잔고":
 			if(member == null) {
 				ta.setText("로그인 필요");
 			}else {
 				ta.setText("현재 잔고: "+ member.getBalance());
 			}
-		}else {
-			
+			break;
 		}
 		
 	}

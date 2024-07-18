@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class MyFrame extends JFrame{
 	JLabel lb1 = new JLabel("아이디");
 	JTextField jt1 = new JTextField();

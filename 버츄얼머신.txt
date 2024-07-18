@@ -1,3 +1,7 @@
+가상머신 > 설정 > 네트워크 > 다음에 연결됨 -> NAT 네트워크로 변경
+도구 > 속성 > NATNetwork DHCP 끄기, IPv4는 10.0.2.0/24, 포트포워딩 추가: 호스트/게스트 포트 : 22, 게스트IP: 10.0.2.4
+
+
 vs코드 원격연결 끌 때 파일 > 원격 연결 닫기
 
 vscode 자동로그인:
@@ -16,3 +20,15 @@ JAVA_HOME 설정:
 터미널에 source ~/.bashrc 입력
 
 확장:마켓플레이스 에서 Extension Pack For Java(Microsoft) 다운( 나머지 2개 같이 받아짐)
+
+
+Docker 설치
+https://docs.docker.com/engine/install/ubuntu/ 접속 후
+Install using the apt repository 탭에서 순서대로 따라하기, 1번 복사 후 터미널에 붙여넣기. 2번도 동일
+
+https://docs.docker.com/engine/install/linux-postinstall/ 접속,
+Manage Docker as a non-root user 탭 1~3번 터미널 입력
+
+sudo chmod 666 /var/run/docker.sock	// 보안이슈로 인해 입력
+
+확장탭에서 docker(microsoft) 설치
