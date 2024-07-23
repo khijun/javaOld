@@ -41,3 +41,11 @@ docker run --name wordpress000ex12 -dit --net=wordpress000net1 -p 8085:80 -e WOR
 // 워드프레스
 
 docker run --name nginx000ex6 -d -p 8084:80 nginx	// nginx 다운
+
+가상 머신에 docker로 만든 컨테이너에 접근하기 위해서 버츄얼머신 > 도구 > 속성 > NAT네트워크 > 포트포워딩에 규칙 추가,(포트랑 ip)
+후에 호스트 전용 네트워크 > 어댑터에 입력된 ip:포트로 접속가능
+
+docker pull mysql:8.0.33	// 이미지생성
+docker run --name mysql0719 -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=spring5fs -e MYSQL_USER=spring5 -e MYSQL_PASSWORD=spring5 mysql:8.0.33
+// 도커 만들기
+docker exec -it mysql0719 mysql -u root -p
