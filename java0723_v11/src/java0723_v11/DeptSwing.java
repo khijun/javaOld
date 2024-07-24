@@ -1,4 +1,4 @@
-package deptSwing;
+package java0723_v11;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.time.LocalTime;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,9 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class DeptSwing extends JFrame{
 	
-	JTextField tf = new JTextField(50);
+	JTextField tf = new JTextField(30);
+	JTextField timeDisplayer = new JTextField(5);
 	JTextArea ta = new JTextArea(10, 50);
 	JButton jb1 = new JButton("출력");
 	
@@ -31,21 +33,22 @@ public class DeptSwing extends JFrame{
 	String sql = null;
 	
 	DeptSwing(){
-		
 		Container con = this.getContentPane();
 		con.setLayout(new BorderLayout());
 		JPanel jp1 = new JPanel(new FlowLayout());
 		JPanel jp2 = new JPanel(new FlowLayout());
-		JPanel jp3 = new JPanel(new FlowLayout());
-		jp1.add(ta);
+		TimeDisplayer td = new TimeDisplayer();
+		new Thread(td).start();
 		jp1.add(tf);
 		jp1.add(jb1);
-		con.add(jp1);
+		jp2.add(ta);
+		con.add(jp1,BorderLayout.NORTH);
+		con.add(jp2, BorderLayout.CENTER);
+		con.add(td, BorderLayout.SOUTH);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("안녕 스윙");
-		this.setLocation(700, 300);
-		this.setSize(900, 500);
+		this.setBounds(700, 300,600, 300);
 		this.setVisible(true);
 		
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";
@@ -83,6 +86,30 @@ public class DeptSwing extends JFrame{
 			}
 		});
 		
+	}
+	
+	class TimeDisplayer extends JPanel implements Runnable{
+		@Override
+		public void run() {
+			while(true){
+				LocalTime lc = LocalTime.now();
+				int hour = lc.getHour(); 
+				String h = hour>9?""+hour:"0"+hour;
+				int minute = lc.getMinute();
+				String m = minute>9?""+minute:"0"+minute;
+				int second = lc.getSecond();
+				String s = second>9?""+second:"0"+second;
+				DeptSwing.this.timeDisplayer.setText(String.format("%s:%s:%s", h, m, s));
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		TimeDisplayer(){
+			this.add(timeDisplayer);
+		}
 		
 	}
 	

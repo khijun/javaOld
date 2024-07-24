@@ -1,0 +1,6 @@
+톰캣은 아파치를 돌리는 서버 컨테이너이다
+
+window > preferences > Server > runtimeEnvironment > add > apache tomcat 9.0으로 톰캣서버 추가
+
+doGet 메소드는 Get 방식으로 데이터를 받는 리퀘스트 객체가 있다.
+데이터를 전달하기 위해선 jsp 페이지에서 input 태그에 name 속성을 주어 전달할 수 있으며, request.getParameter("name속성값") 으로 호출이 가능하다.

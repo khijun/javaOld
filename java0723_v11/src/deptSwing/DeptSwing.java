@@ -19,9 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+
 public class DeptSwing extends JFrame{
 	
-	JTextField tf = new JTextField(50);
+	JTextField tf = new JTextField(44);
 	JTextArea ta = new JTextArea(10, 50);
 	JButton jb1 = new JButton("출력");
 	
@@ -37,15 +39,16 @@ public class DeptSwing extends JFrame{
 		JPanel jp1 = new JPanel(new FlowLayout());
 		JPanel jp2 = new JPanel(new FlowLayout());
 		JPanel jp3 = new JPanel(new FlowLayout());
-		jp1.add(ta);
 		jp1.add(tf);
 		jp1.add(jb1);
-		con.add(jp1);
+		jp2.add(ta);
+		con.add(jp1, BorderLayout.NORTH);
+		con.add(jp2, BorderLayout.CENTER);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("안녕 스윙");
 		this.setLocation(700, 300);
-		this.setSize(900, 500);
+		this.setSize(600, 400);
 		this.setVisible(true);
 		
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";
@@ -64,21 +67,31 @@ public class DeptSwing extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				ta.setText("");
 				try{
-					String loc = tf.getText();
-					sql = String.format("select * from dept where loc = '%s'", loc);
-					System.out.println("dept 출력");
-					pstmt = conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-//					String result = "";
-					if(!rs.next()) {
-						JOptionPane.showMessageDialog(con, "123", "정보", JOptionPane.INFORMATION_MESSAGE);
-					}else {
-						do {
-							ta.append(String.format("%d, %s, %s\n", rs.getInt(1), rs.getString(2), rs.getString(3)));
-						}while(rs.next());
+					String input = tf.getText();
+//					sql = String.format("select * from dept where loc = '%s'", input);
+//					System.out.println("dept 출력");
+//					pstmt = conn.prepareStatement(sql);
+//					rs = pstmt.executeQuery();
+//					if(!rs.next()) {
+//						JOptionPane.showMessageDialog(con, "123", "정보", JOptionPane.INFORMATION_MESSAGE);
+//					}else {
+//						do {
+//							ta.append(String.format("%d, %s, %s\n", rs.getInt(1), rs.getString(2), rs.getString(3)));
+//						}while(rs.next());
+//					}
+					pstmt = conn.prepareStatement(input);
+					ResultSet rs = pstmt.executeQuery();
+					ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+					while(rs.next()) {
+						for(int i = 1; i <= rsmd.getColumnCount(); i++) {
+							if(i>1) ta.append(", ");
+							String columnVaule = rs.getString(i);
+							ta.append(rsmd.getColumnName(i) + ": " + columnVaule);
+						}
+						ta.append("\n");
 					}
 				}catch(SQLException exc) {
-					System.out.println("emp 출력 실패");
+					JOptionPane.showMessageDialog(con, "해당 자료 없음", "정보", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
