@@ -3,4 +3,10 @@
 window > preferences > Server > runtimeEnvironment > add > apache tomcat 9.0으로 톰캣서버 추가
 
 doGet 메소드는 Get 방식으로 데이터를 받는 리퀘스트 객체가 있다.
-데이터를 전달하기 위해선 jsp 페이지에서 input 태그에 name 속성을 주어 전달할 수 있으며, request.getParameter("name속성값") 으로 호출이 가능하다.
+데이터를 전달하기 위해선 jsp 페이지에서 input 태그에 name 속성을 주어 전달할 수 있으며, 
+request.getParameter("name속성값") 으로 호출이 가능하다.
+
+response.setContentType("text/html;charset=utf-8");	// 인코딩방식 utf-8로 설정
+request.getContextPath()는 프로젝트 이름을 반환한다.
+
+form 태그로 웹페이지 이동 및 데이터를 전송할 수 있다.
