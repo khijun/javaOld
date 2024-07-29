@@ -10,3 +10,10 @@ response.setContentType("text/html;charset=utf-8");	// 인코딩방식 utf-8로 
 request.getContextPath()는 프로젝트 이름을 반환한다.
 
 form 태그로 웹페이지 이동 및 데이터를 전송할 수 있다.
+
+정적페이지: 변하지 않는 성격을 가진 페이지
+동적페이지: 자동으로 생성된 페이지, 기존의 웹 서버에 새로운 기능을 가진 프로ㅓ그램을 탑재하여 동적으로 html을 생성
+
+1. jsp 페이지 요청
+2. jsp 컨테이너로 전송
+3. jsp 
