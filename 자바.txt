@@ -131,3 +131,10 @@ A instanceof B는 A 객체가 B로 형변환 될 수 있는지 확인한다.
 HashMap은 Key와 Value가 짝을 이루는 구조를 갖고있다.
 
 Arrays, Comparator, Collections
+
+SimpleDateFormat	// 날짜 포맷을 설정
+javaScript는 스레드가 안됨
+
+임계 영역(critical section)은 둘 이상의 스레드가 동시에 접근해서는 안되는 코드 영역을 뜻한다.
+락은 임계 영역을 포함하고 있는 객체에 접근할 수 있는 권한을 의미한다.
+자바는 임계 영역을 지정하기 위해 동기화(Synchronized) 메소드를 제공한다.
