@@ -1,4 +1,5 @@
 톰캣은 아파치를 돌리는 서버 컨테이너이다
+서블릿과 JSP는 톰캣을 이용한다
 
 String url = "jdbc:mysql://localhost:3307/spring5fs";
 Connection con = null;
@@ -71,3 +72,10 @@ request.getCookies()	// 쿠키들을 배열형태로 반환한다.
 (Cookie 메소드)
 setMaxAge(expiry)	// 쿠키의 유효시간을 설정
 쿠키의 삭제는 쿠키의 유효시간을 0으로 만들고 addCookie()를 한다.
+
+onclick="location.href='주소'"	// 클릭시 주소로 이동
+
+session.setAttribute("이름", 객체);
+session.getAttribute("이름");
+session.invalidate();	// 세션 모두 삭제
+session.removeAttribute("이름");	// 이름에 맞는 세션 삭제
