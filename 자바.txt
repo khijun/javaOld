@@ -1,5 +1,7 @@
 강사님 깃허브
 https://github.com/Jiwoong-Jung/202407Java
+lms
+choongang.atosoft.net
 
 타입은 메모리에 저장되는 방식을 말한다.
 
