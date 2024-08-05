@@ -15,10 +15,7 @@
 <form action="joinController.jsp"method="post">
 이름:<input type = "text" name="name"><br>
 생년월일:<input type = "text" name="birth"><br>
-아이디:<input type = "text" name="id">
-<input type="button" value="중복확인못만들겟다 ㅋㅋ" 
-onclick="window.open('joinController_isExist.jsp', 'popup', 
-'width=600, height=200')"><br>
+아이디:<input type = "text" name="id"><br>
 닉네임:<input type="text" name="nickname"><br>
 비밀번호:<input type = "password" name="pw"><br>
 전화번호:<input type = "text" name="tel"><br>

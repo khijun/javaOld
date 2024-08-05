@@ -128,6 +128,7 @@ public class MemberDAO implements MemberCon{
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			System.out.println("UpdateMember Failed");
+			
 		} finally {
 			JDBCUtil.close(pstmt, con);
 		}

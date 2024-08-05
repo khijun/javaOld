@@ -23,6 +23,12 @@ public class MemberDTO implements Member {
 		this.email = email;
 	}
 	
+	public MemberDTO(String name, String birth,
+			String id, String nickname, String pw,
+			String tel, String email) {
+		this(0, name, birth, nickname,id, pw, tel, email);
+	}
+	
 	public MemberDTO(int memberNo, String name, String birth, String nickname, String pw, String tel, String email) {
 		this(memberNo, name, birth, "", nickname, pw, tel, email);
 	}
