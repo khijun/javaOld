@@ -1,8 +1,14 @@
 root비번 mysql
 sql 명령문을 만들어 애플리케이션에서 dbms로 보낼 때 사용하는 객체가 Statement
 
-String url = "jdbc:mysql://localhost:3307/spring5fs";	// url
+오라클 system 비번 oracle
+
+String url = "jdbc:mysql://localhost:3307/spring5fs";	// mysql
 Class.forName("com.mysql.cj.jdbc.Driver");	// 연결 확인
+
+String url = "jdbc:oracle:thin:@localhost:1521:xe";	// 오라클
+Class.forName("oracle.jdbc.OracleDriver");
+
 Connection con = DriverManager.getConnection(url, "계정", "비밀번호");	// 커넥션 객체 생성
 
 CRUD

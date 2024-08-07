@@ -49,3 +49,9 @@ docker pull mysql:8.0.33	// 이미지생성
 docker run --name mysql0719 -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=spring5fs -e MYSQL_USER=spring5 -e MYSQL_PASSWORD=spring5 mysql:8.0.33
 // 도커 만들기
 docker exec -it mysql0719 mysql -u root -p
+
+
+////////// 오라클 //////////
+docker search oracle
+docker pull oracleinanutshell/oracle-xe-11g	// 도커 허브에서 오라클 이미지 다운
+docker run -d -p 1521:1521 oracleinanutshell/oracle-xe-11g	// 오라클 설ㄹ치
