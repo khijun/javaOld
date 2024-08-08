@@ -78,7 +78,9 @@ Class.forName()	// 이 클래스가 존재하는지 확인
 프로세서(CPU)
 프로세스(실행중인 프로그램)
 멀티 프로세스 -> 리눅스, 유닉스, 과거 윈도우즈에선 불가능했다.
-스레드(프로세스 내부에서 
+스레드(프로세스 내부에서 동시 실행 기능 제공)
+
+maven project에서는 pom.xml에서 의존성을 주입 가능하다. 의존성은 maven repository 검색 후 원하는 jar파일 검색 -> 붙여넣기
 
 String sql = String.format("insert into dept value(%d, '%s', '%s')", deptno, dname, loc);	// format함수로 문자열에 변수를 넣어 문자열로 만들 수 있음.
 

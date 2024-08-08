@@ -90,3 +90,10 @@ jstl
 <c:otherwise> 실행할 문장 </c:otherwise>
 <c:forEach var='인덱스명' begin='시작인덱스' end='종료인덱스' step='간격'>: 반복문
 <c:forEach var='변수명' items="${배열/리스트명}">: 자바의 향상된 for문 비슷한거임
+${dto.num} => 앞글자를 대문자로 바꾸고 앞에 get을 붙인 다음에 뒤에 괄호를 붙여 불러온다. => dto.getNum()
+
+<mapper namespace="네임스페이스">
+<select id = "" parameterType = "" resultType = "">
+	sql문
+</select>
+</mapper>
