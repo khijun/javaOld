@@ -4,4 +4,12 @@ git commit -m "first commit" // 커밋
 git remote add origin https://github.com/kheejun00/202407JAVA.git
 git push -u origin master  // 업로드
 
+git fetch --all
+git reset --hard origin/master
+git pull origin/master // 강제로 리포지토리에서 파일을 pull함
+
+git reflog // 커밋햇던 기록(해시값) 불러오기
+git checkout '커밋해시값' // 헤더를 커밋 해시값으로 변경
+git branch '브랜치' -f // 현재 헤더값을 강제로 브랜치에 덮어씌움
+
 자바 환경변수는 %JAVA_HOME% 이름에 자바 설치 경로를 입력한다
